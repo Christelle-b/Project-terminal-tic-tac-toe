@@ -17,6 +17,23 @@
 */
 function validateMove(move, board) {
     // Implement this at the end if you have time, otherwise you can help your teammates!
+    let [row, col] = move.split(",").map(Number);
+
+    //Next, we will check that the row and column are between 1 and 3
+    if (row < 1 || row > 3 || col < 1 || col > 3) {
+        console.log("Try again...");
+        return false;
+    }
+
+    // Convert the player's row and column to array indexes
+    const rowIndex = row - 1;
+    const colIndex = col - 1;
+
+    //Now we will check that the space is empty
+    if (board[rowIndex - 1][colIndex - 1] !=="_"){
+        console.log("Try again...");
+        return false;
+    }
     return true;
 }
 
@@ -32,5 +49,19 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
-    return false;
+    if (!validateMove(move, board)) {
+        return false;
+    }
+
+    // Split the move into row and column
+    const [row, col] = move.split(",").map(Number);
+
+    // Convert the player's row and column to array indexes
+    const rowIndex = row - 1;
+    const colIndex = col - 1;
+
+    // Place the player's symbol on the board
+    board[rowIndex][colIndex] = player;
+
+    return true;
 }
