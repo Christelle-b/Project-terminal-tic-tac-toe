@@ -17,6 +17,8 @@
 */
 function validateMove(move, board) {
     // Implement this at the end if you have time, otherwise you can help your teammates!
+    //const row = move[0];
+   // const col = move[1];
     let [row, col] = move.split(",").map(Number);
 
     //Next, we will check that the row and column are between 1 and 3
@@ -30,7 +32,7 @@ function validateMove(move, board) {
     const colIndex = col - 1;
 
     //Now we will check that the space is empty
-    if (board[rowIndex - 1][colIndex - 1] !=="_"){
+    if (board[rowIndex][colIndex] !=="_"){
         console.log("Try again...");
         return false;
     }
